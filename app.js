@@ -2,6 +2,8 @@ require('dotenv').config();
 const debug = require('debug')('MeetClass:server');
 const createError = require('http-errors');
 const express = require('express');
+const expressLayout = require('express-ejs-layouts');
+const compression = require('compression');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -13,17 +15,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
+app.use(compression());
+app.use(expressLayout);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.send({
-        status: 200,
-        message: "Hello World!"
+    res.status(200).render('index', {
+        layout: false,
+        title: "MeetClass X PPLG 1"
     })
 })
+
+
 
 app.use(function(req, res, next) {
     next(createError(404));
@@ -36,12 +42,12 @@ app.use(function(err, req, res, next) {
   
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.render('error', { layout: false });
 });
 
 app.listen(port, () => {
     console.log("[🚀] Server Meluncurr | http://localhost:" + port)
-    console.log("[⚒]  Mode: " + app.get('env'))
+    console.log("[🔨] Mode: " + app.get('env'))
 })
 
 
