@@ -1,3 +1,4 @@
+require('dotenv').config();
 const debug = require('debug')('MeetClass:server');
 const createError = require('http-errors');
 const express = require('express');
@@ -40,6 +41,7 @@ app.use(function(err, req, res, next) {
 
 app.listen(port, () => {
     console.log("[🚀] Server Meluncurr | http://localhost:" + port)
+    console.log("[⚒]  Mode: " + app.get('env'))
 })
 
 

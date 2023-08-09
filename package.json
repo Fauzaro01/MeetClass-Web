@@ -4,6 +4,8 @@
   "description": "Aplikasi Web untuk keperluan Absen atau infomasi tentang kelas PPLG 1",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "prettier": "prettier --write .",
     "test": "nodemon"
   },
   "keywords": [
