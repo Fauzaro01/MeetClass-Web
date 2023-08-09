@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     res.status(200).render('index', {
-        layout: false,
+        layout: 'layout/main',
         title: "MeetClass X PPLG 1"
     })
 })
