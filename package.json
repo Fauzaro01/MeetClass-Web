@@ -1,0 +1,25 @@
+{
+  "name": "meetclass-web",
+  "version": "1.0.0",
+  "description": "Aplikasi Web untuk keperluan Absen atau infomasi tentang kelas PPLG 1",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "keywords": [
+    "web",
+    "absen",
+    "school",
+    "project",
+    "nodejs"
+  ],
+  "author": "fauzaro01",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "debug": "^4.3.4",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}
