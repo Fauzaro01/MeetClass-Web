@@ -1,65 +1,71 @@
-:root{
-  --main-bg:#e91e63;
-  --main-bg-gradient: linear-gradient(-45deg,  #5C27FE,#C165DD,#1de5e2,#2AFEB7);
-  --color-blue-light: #1de5e2;
-  --color-blue-dark: #006e6c;
+:root {
+    --main-bg: #e91e63;
+    --main-bg-gradient: linear-gradient(
+        -45deg,
+        #5c27fe,
+        #c165dd,
+        #1de5e2,
+        #2afeb7
+    );
+    --color-blue-light: #1de5e2;
+    --color-blue-dark: #006e6c;
 }
 
 .main-bg-gradient {
-  background: var(--main-bg-gradient);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100%;
+    background: var(--main-bg-gradient);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100%;
 }
 
 .from-go {
-  background: #006e6c !important;
+    background: #006e6c !important;
 }
 
 label a.a-none {
-  text-decoration: none;
-  color: var(--color-blue-dark)
+    text-decoration: none;
+    color: var(--color-blue-dark);
 }
 
-input:focus, button:focus {
-  border: 1px solid var(--color-blue-light) !important;
-  box-shadow: none !important;
+input:focus,
+button:focus {
+    border: 1px solid var(--color-blue-light) !important;
+    box-shadow: none !important;
 }
 
 .form-check-input:checked {
-  background-color: var(--color-blue-light) !important;
-  border-color: var(--color-blue-light) !important;
+    background-color: var(--color-blue-light) !important;
+    border-color: var(--color-blue-light) !important;
 }
-
 
 .icon-list {
     padding-left: 0;
     list-style: none;
-  }
-  .icon-list li {
+}
+.icon-list li {
     display: flex;
     align-items: flex-start;
-    margin-bottom: .25rem;
-  }
-  .icon-list li::before {
+    margin-bottom: 0.25rem;
+}
+.icon-list li::before {
     display: block;
     flex-shrink: 0;
     width: 1.5em;
     height: 1.5em;
-    margin-right: .5rem;
-    content: "";
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z'/%3E%3C/svg%3E") no-repeat center center / 100% auto;
-  }
-
-  @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    margin-right: 0.5rem;
+    content: '';
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath d='M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z'/%3E%3C/svg%3E")
+        no-repeat center center / 100% auto;
 }
-  
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

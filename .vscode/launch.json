@@ -7,18 +7,11 @@
         {
             "name": "Run Prettier Formatting Code",
             "request": "launch",
-            "runtimeArgs": [
-                "run-script",
-                "prettier"
-            ],
+            "runtimeArgs": ["run-script", "prettier"],
             "runtimeExecutable": "npm",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
+            "skipFiles": ["<node_internals>/**"],
             "type": "node"
         },
-
-        
 
         {
             "console": "integratedTerminal",
@@ -28,9 +21,7 @@
             "request": "launch",
             "restart": true,
             "runtimeExecutable": "nodemon",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
+            "skipFiles": ["<node_internals>/**"],
             "type": "node",
             "envFile": "${workspaceFolder}/.env"
         },
@@ -38,9 +29,7 @@
             "type": "node",
             "request": "launch",
             "name": "Run And Code",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
+            "skipFiles": ["<node_internals>/**"],
             "program": "${workspaceFolder}\\app.js",
             "envFile": "${workspaceFolder}/.env"
         }

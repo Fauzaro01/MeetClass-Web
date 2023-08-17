@@ -5,25 +5,16 @@ const router = express.Router();
 
 router.use('/', (req, res, next) => {
     console.log(`Request received from IP: ${req.ip}`);
-    next();
-  });
+    
+});
 
-router.get('/login', (req, res) => {
-    res.render('login', {
-        layout: 'layout/auth',
-        page: "Sign In"
-    })
-})
-
-router.get('/register', (req, res) => {
-    res.render('register', {
-        layout: 'layout/auth',
-        page: 'Register'
-    })
-})
-
-router.post('/login', (req, res) => {
-    console.log(req.body)
-})
+router.get('/', (req, res) => {
+    res.status(200).render('index', {
+        layout: 'layout/main',
+        title: 'MeetClass X PPLG 1',
+        page: 'Home',
+    });
+});
 
 module.exports = router;
+e.exports = router;

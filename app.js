@@ -19,37 +19,27 @@ app.use(compression());
 app.use(expressLayout);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser())
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/auth', require('./routes/index'))
+app.use('/', require('./routes/index'));
+app.use('/auth', require('./routes/auth'));
 
-app.get('/', (req, res) => {
-    res.status(200).render('index', {
-        layout: 'layout/main',
-        title: "MeetClass X PPLG 1",
-        page: "Home"
-    })
-})
-
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     next(createError(404));
-  });
-  
-app.use(function(err, req, res, next) {
+});
+
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-  
+
     // render the error page
     res.status(err.status || 500);
     res.render('error', { layout: false });
 });
 
 app.listen(port, () => {
-    console.log("[🚀] Server Meluncurr | http://localhost:" + port)
-    console.log("[🔨] Mode: " + app.get('env'))
-})
-
-
-  
+    console.log('[🚀] Server Meluncurr | http://localhost:' + port);
+    console.log('[🔨] Mode: ' + app.get('env'));
+});
