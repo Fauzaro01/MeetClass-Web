@@ -12,8 +12,8 @@
 	height: 100%;
 }
 
-.main-bg {
-  background: var(--color-blue-light) !important;
+.from-go {
+  background: #006e6c !important;
 }
 
 label a.a-none {
