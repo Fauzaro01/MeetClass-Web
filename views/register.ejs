@@ -7,12 +7,20 @@
             <h2 class="p-3"><%= page %></h2>
           </div>
           <div class="card-body">
-            <form method="post" action="/auth/login">
-              <div class="mb-4">
-                <label for="username" class="form-label">Username/Email</label>
-                <input type="text" name="username" class="form-control" id="username" required/>
-              </div>
-              <div class="mb-4">
+            <form method="post" action="/auth/register">
+                <div class="mb-4">
+                  <label for="fullname" class="form-label">Fullname</label>
+                  <input type="text" name="fullname" class="form-control" id="fullname" required/>
+                </div>
+                <div class="mb-4">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" name="username" class="form-control" id="username" required/>
+                </div>
+                <div class="mb-4">
+                  <label for="username" class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control" id="email" required/>
+                </div>
+                <div class="mb-4">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control" id="password" required/>
               </div>
@@ -21,7 +29,7 @@
                 <label for="remember" class="form-label">Remember Me</label>
               </div>
               <div class="mb-2">
-                <label for="hint" class="form-label">Belum Mempunyai Akun? <a class="a-none"href="/auth/register">Daftar</a></label>
+                <label for="hint" class="form-label">Sudah Mempunyai Akun? <a class="a-none"href="/daftar">Login</a></label>
               </div>
               <div class="d-grid">
                 <button type="submit" value="Submit" class="btn text-light from-go">Go</button>
