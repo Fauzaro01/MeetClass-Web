@@ -25,6 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 
+app.get('/test', (req, res) => {
+    res.status(200).send({
+        message: "ok",
+        status: 200
+    })
+})
+
 app.use(function (req, res, next) {
     next(createError(404));
 });
