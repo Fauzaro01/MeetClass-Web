@@ -25,5 +25,8 @@ router.get('/register', (req, res) => {
 router.post('/login', (req, res) => {
     console.log(req.body);
 });
+router.post('/register', (req, res) => {
+    console.log(req.body);
+});
 
 module.exports = router;
