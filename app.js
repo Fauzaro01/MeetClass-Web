@@ -14,6 +14,9 @@ const port = 3000;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
+app.set('trust proxy', 1);
+app.disable('x-powered-by');
 app.use(logger('dev'));
 app.use(compression());
 app.use(expressLayout);
