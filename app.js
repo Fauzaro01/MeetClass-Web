@@ -3,6 +3,7 @@ const debug = require('debug')('MeetClass:server');
 const createError = require('http-errors');
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
+const rateLimit = require('express-rate-limit');
 const compression = require('compression');
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -14,9 +15,13 @@ const port = 3000;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
 app.set('trust proxy', 1);
 app.disable('x-powered-by');
+app.use(rateLimit({
+	windowMs: 1 * 60 * 1000,
+	max: 1500,
+	message: 'Oops too many requests',
+}))
 app.use(logger('dev'));
 app.use(compression());
 app.use(expressLayout);
