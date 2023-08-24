@@ -8,9 +8,11 @@ const compression = require('compression');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const { connectMongoDb } = require('./database/connect');
 
 const app = express();
 const port = 3000;
+connectMongoDb();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -28,7 +30,7 @@ app.use(expressLayout);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
