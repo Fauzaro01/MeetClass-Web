@@ -31,8 +31,14 @@ Kami ingin mengucapkan terima kasih yang sebesar-besarnya kepada individu yang t
 
 ## Authors
 
+<<<<<<< HEAD
 -   [@Fauzaro01](https://www.github.com/fauzaro01)
 -   [@adrianmaulana568](https://github.com/adrianmaulana568)
+=======
+- [@Fauzaro01](https://www.github.com/fauzaro01) | Backend 
+- [@adrianmaulana568](https://github.com/adrianmaulana568) | Sumber Informasi
+
+>>>>>>> 138ca1ae97e73b6d9979e2be12fca2284a17c17a
 
 ## Roadmap
 
