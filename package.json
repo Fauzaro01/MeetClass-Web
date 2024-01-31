@@ -19,6 +19,7 @@
     "license": "MIT",
     "dependencies": {
         "compression": "^1.7.4",
+        "connect-flash": "^0.1.1",
         "cookie-parser": "^1.4.6",
         "debug": "^4.3.4",
         "dotenv": "^16.3.1",
@@ -26,9 +27,15 @@
         "express": "^4.18.2",
         "express-ejs-layouts": "^2.5.1",
         "express-rate-limit": "^6.9.0",
+        "express-recaptcha": "^5.1.0",
+        "express-session": "^1.17.3",
+        "fs-extra": "^11.1.1",
         "http-errors": "^2.0.0",
+        "memorystore": "^1.6.7",
         "mongoose": "^7.4.4",
         "morgan": "^1.10.0",
-        "nodemon": "^3.0.1"
+        "nodemon": "^3.0.1",
+        "passport": "^0.6.0",
+        "passport-local": "^1.0.0"
     }
 }

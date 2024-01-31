@@ -4,10 +4,12 @@
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card shadow">
           <div class="card-title text-center border-bottom">
-            <h2 class="p-3"><%= page %></h2>
+            <h2 class="p-3">Sign in</h2>
           </div>
           <div class="card-body">
             <form method="post" action="/auth/login">
+              <%- include('layout/msg')  %> 
+              <%- include('layout/errors')  %> 
               <div class="mb-4">
                 <label for="username" class="form-label">Username/Email</label>
                 <input type="text" name="username" class="form-control" id="username" required/>
@@ -16,6 +18,7 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control" id="password" required/>
               </div>
+              <%- recaptcha %>
               <div class="mb-6">
                 <input type="checkbox" class="form-check-input" id="remember" />
                 <label for="remember" class="form-label">Remember Me</label>

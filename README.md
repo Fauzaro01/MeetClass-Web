@@ -1,9 +1,9 @@
-
 # ClassMeet Web
 
 ClassMeet adalah sebuah platform atau website yang ditujukan untuk siswa kelas X PPLG 1 di SMK TI Muhammadiyah 1 Cikampek. 👨🏻‍🎓 Tujuan utamanya adalah untuk memberikan tambahan wawasan kepada siswa serta menyediakan informasi terkait mata pelajaran dan struktur kelas.
 
 NOTE: Masih Tahap Pengembangan :)
+
 ## Features
 
 Fitur utama yang ditawarkan oleh ClassMeet meliputi:
@@ -24,23 +24,19 @@ Fitur utama yang ditawarkan oleh ClassMeet meliputi:
 
 Dengan demikian, ClassMeet bertujuan untuk menciptakan lingkungan virtual yang mendukung siswa kelas X PPLG 1 di SMK TI Muhammadiyah 1 Cikampek dalam proses pembelajaran, komunikasi, dan kolaborasi.
 
-
 ## Ucapan berhargaan untuk Kontributor
 
 Kami ingin mengucapkan terima kasih yang sebesar-besarnya kepada individu yang telah memberikan kontribusi luar biasa dalam web ini. Tanpa kerja keras dan dedikasi mereka, pencapaian ini tidak akan mungkin terwujud.
 
-- [UI Dashboard Template](https://github.com/indrijunanda/RuangAdmin)
 
 ## Authors
 
-- [@Fauzaro01](https://www.github.com/fauzaro01) 
-- [@adrianmaulana568](https://github.com/adrianmaulana568)
-
+-   [@Fauzaro01](https://www.github.com/fauzaro01)
+-   [@adrianmaulana568](https://github.com/adrianmaulana568)
 
 ## Roadmap
 
-- Add Some Infomation for web :)
-- Add Authentication System with MongoDB and PassportJS
-- Add Chatting System
-- Add more integrations 
-
+-   Add Some Infomation for web :)
+-   Add Authentication System with MongoDB and PassportJS
+-   Add Chatting System
+-   Add more integrations
