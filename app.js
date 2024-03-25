@@ -71,12 +71,6 @@ app.get('/test', (req, res) => {
     });
 });
 
-app.get('/dashboard', (req, res) => {
-    res.render('dashboard', {
-        layout: false,
-    });
-});
-
 app.use(function (req, res, next) {
     next(createError(404));
 });
