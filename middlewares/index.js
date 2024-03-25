@@ -13,7 +13,7 @@ module.exports = {
 			return next();
 		}
 		req.flash('error_msg', 'Please login to continue');
-		res.redirect('/login');
+		res.redirect('/auth/login');
 	},
 	notAuthenticated: function (req, res, next) {
 		if (!req.isAuthenticated()) {
@@ -24,7 +24,7 @@ module.exports = {
 	captchaRegister: function (req, res, next) {
 		if (req.recaptcha.error) {
 			req.flash('error_msg', 'reCAPTCHA Incorrect');
-			res.redirect('/register');
+			res.redirect('/auth/register');
 		} else {
 			return next();
 		}
@@ -32,7 +32,7 @@ module.exports = {
 	captchaLogin: function (req, res, next) {
 		if (req.recaptcha.error) {
 			req.flash('error_msg', 'reCAPTCHA Incorrect');
-			res.redirect('/login');
+			res.redirect('/auth/login');
 		} else {
 			return next();
 		}
