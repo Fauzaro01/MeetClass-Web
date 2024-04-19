@@ -15,11 +15,10 @@ router.get('/dashboard', isAuthenticated, (req, res) => {
     });
 });
 
-
 router.get('/mapel', (req, res) => {
     res.render('mapel', {
         layout: 'layout/main',
-        page : 'Mata Pelajaran'
+        page : 'Mata Pelajaran',
     });
 });
 
