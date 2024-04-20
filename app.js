@@ -89,13 +89,7 @@ app.use(function (err, req, res, next) {
     res.render('error', { layout: false });
 });
 
-io.on('connection', (socket) => {
-    socket.on('chatlog', (msg) => {
-        console.log("PESAN : ", msg)
-        io.emit('chatlog', msg)
-    });
-})
-
+require('./lib/wshandler')(io)
 server.listen(process.env.PORT, () => {
     console.log('[🚀] Server Meluncurr | http://localhost:' + process.env.PORT);
     console.log('[🔨] Mode: ' + app.get('env'));

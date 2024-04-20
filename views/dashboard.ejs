@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <title>Dashboard</title>
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-        />
-        <link
-            href="https://startbootstrap.github.io/startbootstrap-blog-home/css/styles.css"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="/css/chatui.css" />
-    </head>
 
-    <body>
-        <%- include('layout/nav') %>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Dashboard</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link href="https://startbootstrap.github.io/startbootstrap-blog-home/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/chatui.css" />
+</head>
+
+<body>
+    <%- include('layout/nav') %>
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
                 <div class="text-center my-5">
@@ -52,56 +42,10 @@
                         </header>
 
                         <main class="msger-chat">
-                            <div class="msg left-msg">
-                                <div
-                                    class="msg-img"
-                                    style="
-                                        background-image: url(https://dummyimage.com/100x100/ff4242/000000.png);
-                                    "
-                                ></div>
-
-                                <div class="msg-bubble">
-                                    <div class="msg-info">
-                                        <div class="msg-info-name">BOT</div>
-                                        <div class="msg-info-time">09:00</div>
-                                    </div>
-
-                                    <div class="msg-text">
-                                        Hi <%= user.username %>, Selamat datang
-                                        di MeetClass!<br />
-                                        Mari Bersosialiasi dan Mengobrol
-                                        bersama. 😄
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="msg right-msg">
-                                <div
-                                    class="msg-img"
-                                    style="
-                                        background-image: url(https://dummyimage.com/100x100/00ffd0/000000.png);
-                                    "
-                                ></div>
-
-                                <div class="msg-bubble">
-                                    <div class="msg-info">
-                                        <div class="msg-info-name">Sajad</div>
-                                        <div class="msg-info-time">12:46</div>
-                                    </div>
-
-                                    <div class="msg-text">
-                                        You can change your name in JS section!
-                                    </div>
-                                </div>
-                            </div>
                         </main>
 
                         <form class="msger-inputarea">
-                            <input
-                                type="text"
-                                class="msger-input"
-                                placeholder="Enter your message..."
-                            />
+                            <input type="text" class="msger-input" placeholder="Enter your message..." />
                             <button type="submit" class="msger-send-btn">
                                 Send
                             </button>
@@ -115,18 +59,9 @@
                         <div class="card-header">Search</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input
-                                    class="form-control"
-                                    type="text"
-                                    placeholder="Enter search term..."
-                                    aria-label="Enter search term..."
-                                    aria-describedby="button-search"
-                                />
-                                <button
-                                    class="btn btn-primary"
-                                    id="button-search"
-                                    type="button"
-                                >
+                                <input class="form-control" type="text" placeholder="Enter search term..."
+                                    aria-label="Enter search term..." aria-describedby="button-search" />
+                                <button class="btn btn-primary" id="button-search" type="button">
                                     Go!
                                 </button>
                             </div>
@@ -159,21 +94,22 @@
                         <div class="card-header">Side Widget</div>
                         <div class="card-body">
                             <% if (user) { %>
-                            <p>
-                                Selamat datang, <%= user.username %>! Anda sudah
-                                login.
-                            </p>
-                            <p><%= user %></p>
-                            <a href="auth/logout">Logout</a>
+                                <p>
+                                    Selamat datang, <%= user.username %>! Anda sudah
+                                        login.
+                                </p>
                             <% } %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+        <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
         <script src="/js/chat.js"></script>
-    </body>
+</body>
+
 </html>

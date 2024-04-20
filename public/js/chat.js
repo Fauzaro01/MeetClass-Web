@@ -1,36 +1,74 @@
 const socket = io();
 
-socket.on('chatlog', (log) => {
-    if (!log.pengirim == USERNAME) {
-        appendMessage(log.pengirim, PERSON_IMG, 'left', log.pesan, log.waktu);
-    }
-    // console.log(log)
-});
-
-socket.on('disconnect', function () {
-    console.log('Kamu terputus dari server.');
-});
-
 const msgerForm = get('.msger-inputarea');
 const msgerInput = get('.msger-input');
 const msgerChat = get('.msger-chat');
 
-const BOT_IMG = 'https://dummyimage.com/100x100/ff4242/000000.png';
 const PERSON_IMG = 'https://dummyimage.com/100x100/00ffd0/000000.png';
 const MY_PROFILE = 'https://dummyimage.com/100x100/ffdd00/000c8c.png';
-const USERNAME = document.cookie.split('; username=')[1];
+var userData;
 
+socket.on('chatlog', (log) => {
+    if (!log.senderUsername == userData.username) {
+        appendMessage(
+            log.senderUsername,
+            PERSON_IMG,
+            'left',
+            log.message,
+            log.timestamp
+        );
+    }
+});
+
+socket.on("warnUser", (data) => {
+    if (socket.id == data.senderId) {
+      Swal.fire({
+        title: "Peringatan Spam!",
+        text: "Anda telah melakukan spam! ",
+        footer: "Harap tunggu 5 detik sebelum mengirim pesan lagi.",
+        icon: "warning",
+        timer: 5000,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+      });
+    }
+  });
+
+document.addEventListener('DOMContentLoaded', async function () {
+    await axios
+        .get('/api/account')
+        .then(function (response) {
+            userData = response.data;
+            appendMessage(
+                'Welcomer BOT',
+                'https://dummyimage.com/100x100/ff4242/000000.png',
+                'left',
+                `Hi ${userData.username}, Selamat datang di MeetClass! <br> Mari Bersosialiasi dan Mengobrol bersama. 😄`,
+                1594949400000
+            );
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});
 msgerForm.addEventListener('submit', (event) => {
     event.preventDefault();
-
     const msgText = msgerInput.value;
     if (!msgText) return;
-
-    appendMessage(USERNAME, MY_PROFILE, 'right', msgText, new Date());
+    appendMessage(
+        userData.username,
+        MY_PROFILE,
+        'right',
+        validator.escape(msgText),
+        new Date().getTime()
+    );
     socket.emit('chatlog', {
-        pengirim: USERNAME,
-        pesan: msgText,
-        waktu: new Date(),
+        senderUsername: userData.username,
+        message: msgText,
+        timestamp: new Date().getTime(),
     });
     msgerInput.value = '';
 });
@@ -44,7 +82,9 @@ function appendMessage(name, img, side, text, waktu) {
   <div class="msg-bubble">
     <div class="msg-info">
       <div class="msg-info-name">${name}</div>
-      <div class="msg-info-time">${formatDate(waktu)}</div>
+      <div class="msg-info-time" data-timestamp="${waktu}">${formatChatTime(
+        waktu
+    )}</div>
     </div>
 
     <div class="msg-text">${text}</div>
@@ -61,11 +101,39 @@ function get(selector, root = document) {
     return root.querySelector(selector);
 }
 
-function formatDate(date) {
-    const waktu = Date.parse(date);
-    const objekWaktu = new Date(waktu);
-    const h = '0' + objekWaktu.getHours();
-    const m = '0' + objekWaktu.getMinutes();
+function formatChatTime(timestamp) {
+    const waktu = new Date(timestamp);
+    const now = new Date();
+    const timeDiff = now - waktu.getTime();
 
-    return `${h.slice(-2)}:${m.slice(-2)}`;
+    // Menghitung perbedaan waktu dalam detik
+    const seconds = Math.floor(timeDiff / 1000);
+
+    if (seconds < 60) {
+        return 'Baru saja';
+    } else if (seconds < 3600) {
+        const minutes = Math.floor(seconds / 60);
+        return `${minutes} menit yang lalu`;
+    } else if (seconds < 86400) {
+        const hours = Math.floor(seconds / 3600);
+        return `${hours} jam yang lalu`;
+    } else if (seconds < 2592000) {
+        const days = Math.floor(seconds / 86400);
+        return `${days} hari yang lalu`;
+    } else {
+        // Jika lebih dari sebulan, kembalikan format tanggal
+        return waktu.toLocaleDateString('id-ID');
+    }
 }
+
+function updateChatTime() {
+    const timeElements = document.querySelectorAll('.msg-info-time');
+    timeElements.forEach((element) => {
+        const timestamp = new Date(parseInt(element.dataset.timestamp));
+        const relativeTime = formatChatTime(timestamp);
+        element.textContent = relativeTime;
+    });
+}
+
+// Panggil fungsi updateChatTime setiap 30 detik
+setInterval(updateChatTime, 30000); // 30.000 milidetik = 30 detik

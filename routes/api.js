@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/account', (req, res)=> {
+router.get('/account', (req, res)=> {
     if (req.user) {
         res.status(200).send({
             username : req.user.username,
