@@ -1,49 +1,57 @@
-<!-- Login Form -->
 <div class="container">
-    <div class="row justify-content-center mt-5">
-      <div class="col-lg-4 col-md-6 col-sm-6">
-        <div class="card shadow">
-          <div class="card-title text-center border-bottom">
-            <h2 class="p-3">Register</h2>
-          </div>
-          <div class="card-body">
-            <form method="post" action="/auth/register">
-              <%- include('layout/msg')  %> 
-              <%- include('layout/errors')  %> 
-                <!-- <div class="mb-4">
-                  <label for="fullname" class="form-label">Fullname</label>
-                  <input type="text" name="fullname" class="form-control" id="fullname" required/>
-                </div> -->
+  <div class="row justify-content-center mt-5 px-3">
+    <div class="col-lg-4">
+      <div class="card shadow border-dark">
+        <div class="card-title text-center border-bottom">
+          <h2 class="p-3 title">Register</h2>
+        </div>
+        <div class="card-body">
+          <form method="post" action="/auth/register">
+            <%- include('layout/msg') %>
+              <%- include('layout/errors') %>
+                <div id="divErr" class="alert alert-danger alert-sm" style="display: none; font-size: 14px; padding: 6px;"></div>
                 <div class="mb-4">
                   <label for="username" class="form-label">Username</label>
-                  <input type="text" name="username" class="form-control" id="username" required/>
+                  <input type="text" name="username" class="form-control" id="username" required />
                 </div>
-                <!-- <div class="mb-4">
-                  <label for="username" class="form-label">Email</label>
-                  <input type="email" name="email" class="form-control" id="email" required/>
-                </div> -->
                 <div class="mb-4">
                   <label for="password" class="form-label">Password</label>
-                  <input type="password" name="password" class="form-control" id="password" required/>
+                  <input type="password" name="password" class="form-control" id="password" required />
                 </div>
                 <div class="mb-4">
-                  <label for="floatingPassword">Confirm Password</label>
-                  <input type="password" name="confirmPassword" class="form-control" id="floatingInput" required/>
+                  <label for="confirmPassword" class="form-label">Confirm Password</label>
+                  <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" required />
                 </div>
-              <%- recaptcha %>
-              <div class="mb-6">
-                <input type="checkbox" class="form-check-input" id="remember" />
-                <label for="remember" class="form-label">Remember Me</label>
-              </div>
-              <div class="mb-2">
-                <label for="hint" class="form-label">Sudah Mempunyai Akun? <a class="a-none"href="/daftar">Login</a></label>
-              </div>
-              <div class="d-grid">
-                <button type="submit" value="Submit" class="btn text-light from-go">Go</button>
-              </div>
-            </form>
-          </div>
+                <%- recaptcha %>
+                  <div class="mb-2 py-2">
+                    <p>Sudah memiliki akun?
+                      <a class="btn btn-sm btn-dark" href="/auth/login">Login</a>
+                    </p>
+                  </div>
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-submit border-dark">
+                      Submit
+                    </button>
+                  </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const passwordInput = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const divErr = document.getElementById('divErr');
+
+    confirmPassword.addEventListener('input', function () {
+      const passwordValue = passwordInput.value;
+      const confirmPasswordValue = confirmPassword.value;
+      passwordValue !== confirmPasswordValue
+        ? (divErr.textContent = "Konfirmasi password tidak cocok", divErr.style.display = "block")
+        : (divErr.style.display = "none", divErr.textContent = "");
+
+    });
+  })
+</script>
