@@ -9,7 +9,9 @@ const MY_PROFILE = 'https://dummyimage.com/100x100/ffdd00/000c8c.png';
 var userData;
 
 socket.on('chatlog', (log) => {
-    if (!log.senderUsername == userData.username) {
+    console.log("Pesan terbaru: ", log)
+    console.log("Userdata: ", userData)
+    if (log.senderUsername !== userData.username) {
         appendMessage(
             log.senderUsername,
             PERSON_IMG,
@@ -17,6 +19,10 @@ socket.on('chatlog', (log) => {
             log.message,
             log.timestamp
         );
+        console.log("Gini")
+    } else {
+        console.log("Gitu")
+        
     }
 });
 
@@ -73,7 +79,7 @@ msgerForm.addEventListener('submit', (event) => {
     msgerInput.value = '';
 });
 
-function appendMessage(name, img, side, text, waktu) {
+function appendMessage(name , img, side, text, waktu) {
     //   Simple solution for small apps
     const msgHTML = `
 <div class="msg ${side}-msg">

@@ -19,7 +19,7 @@ module.exports = {
         if (!req.isAuthenticated()) {
             return next();
         }
-        res.redirect('/docs');
+        res.redirect('/dashboard');
     },
     captchaRegister: function (req, res, next) {
         if (req.recaptcha.error) {
